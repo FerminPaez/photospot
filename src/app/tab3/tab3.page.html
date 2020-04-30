@@ -1,17 +1,28 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Mi Perfil
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <div class="container" style="margin-top: 10px;">
+    <ion-row>
+      <ion-col size="3">
+        <img [src]='photo' class= "img-thumbnail rounded-circle">
+      </ion-col>
+      <ion-col size="9">
+        <ion-row>
+          <p style="font-weight: bold; text-align: end;">{{name}}</p>
+        </ion-row>
+        <ion-row>
+          <ion-col size= "4" style="font-size: small;">421 publicacion</ion-col>
+          <ion-col size= "4" style="font-size: small;">421 seguidores</ion-col>
+          <ion-col size= "4" style="font-size: small;">421 seguidos</ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <hr style="font-weight: bold;">
+  </div>
 </ion-content>

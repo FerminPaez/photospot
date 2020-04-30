@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig : {
+    apiKey: "AIzaSyAif1nfn_zP4JlQQRfdWFJeujiESj9Kszc",
+    authDomain: "photospot-bdcfe.firebaseapp.com",
+    databaseURL: "https://photospot-bdcfe.firebaseio.com",
+    projectId: "photospot-bdcfe",
+    storageBucket: "photospot-bdcfe.appspot.com",
+    messagingSenderId: "1033213085325",
+    appId: "1:1033213085325:web:2bf9569be35b72aa2784c4",
+    measurementId: "G-CGWWTF46C2"
+  }
 };
 
 /*

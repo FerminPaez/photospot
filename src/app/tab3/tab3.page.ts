@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { FirebaseStorageService } from '../providers/firebase-storage.service';
+
+
 
 @Component({
   selector: 'app-tab3',
@@ -7,6 +10,9 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  constructor(private fsb: FirebaseStorageService) {
+  }
+  public photo = localStorage.getItem('profilePicture');
+  public name  = localStorage.getItem('usuario');
 
 }

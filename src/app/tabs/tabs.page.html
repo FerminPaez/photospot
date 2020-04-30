@@ -1,20 +1,39 @@
 <ion-tabs>
 
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="tab1">
-      <ion-icon name="triangle"></ion-icon>
-      <ion-label>Tab 1</ion-label>
+  <ion-tab-bar slot="bottom" *ngIf="login == true" >
+    <ion-tab-button tab="tab1"(click)="loadingPhoto = false" *ngIf="loadingPhoto == false && this.router.url != '/tabs/cargar-foto'">
+      <ion-icon name="image"></ion-icon>
     </ion-tab-button>
 
-    <ion-tab-button tab="tab2">
-      <ion-icon name="ellipse"></ion-icon>
-      <ion-label>Tab 2</ion-label>
+    <ion-tab-button tab="tab2" (click)="loadingPhoto = false" *ngIf="loadingPhoto == false && this.router.url != '/tabs/cargar-foto'">
+      <ion-icon name="map"></ion-icon>
     </ion-tab-button>
 
-    <ion-tab-button tab="tab3">
-      <ion-icon name="square"></ion-icon>
-      <ion-label>Tab 3</ion-label>
+    <ion-tab-button tab="tomar-foto" *ngIf="loadingPhoto == true || this.router.url == '/tabs/cargar-foto'">
+      <ion-icon name="camera-outline"></ion-icon>    
     </ion-tab-button>
+
+    <ion-tab-button tab="cargar-foto" (click)="cargarFoto()"><!-- *ngIf="loadingPhoto == false && this.router.url != '/tabs/cargar-foto'">-->
+      <ion-icon name="image-outline"></ion-icon>
+    </ion-tab-button>  
+
+ 
+
+    <ion-tab-button tab="tab3"(click)="loadingPhoto = false" *ngIf="loadingPhoto == false && this.router.url != '/tabs/cargar-foto'">
+      <ion-icon name="person"></ion-icon>
+    </ion-tab-button>
+    
+
+
+    <!--
+    <ion-tab-button tab=""  *ngIf="loadingPhoto == true || this.router.url == '/tabs/cargar-foto'">
+      <ion-icon name="camera-outline"></ion-icon>
+    </ion-tab-button>
+    -->
+
   </ion-tab-bar>
+
+  <!-- Menu Cargar Fotos -->
+
 
 </ion-tabs>
