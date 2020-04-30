@@ -1,0 +1,42 @@
+<ion-content class="fondo">
+
+    <ion-row class="cuerpo">
+        <ion-col size="3"></ion-col>
+        <ion-col size="6">
+                <h1 style="text-align: center;">PhotoSpot</h1>
+                <form>
+                    <ion-row>
+                        <ion-col size="3"></ion-col>
+                        <ion-col size="6">
+                            <ion-input class="entradaLogin" type ="email"  placeholder="e-mail"  name="email" #email ></ion-input>
+                        </ion-col>
+                        <ion-col size="3"></ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="3"></ion-col>
+                        <ion-col size="6">
+                            <ion-input id="password" class="entradaLogin" type="password"  placeholder="password" name= "password" #password ></ion-input>
+                        </ion-col>
+                        <ion-col size="3"></ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="12"  style="text-align: center; opacity: 80%;">
+                            <ion-row>
+                                <ion-col size="6">
+                                    <ion-button color="succes" (click)="login(email.value, password.value)"> Login </ion-button>
+                                </ion-col>
+                                <ion-col size="6">
+                                    <ion-button color="succes" (click)="loginWhitGoogle()"> Google </ion-button>
+                                </ion-col>
+                                <ion-col size="6">
+                                    <ion-button color="succes" (click)="registrar(email.value, password.value)"> Register </ion-button>
+                                </ion-col>
+                            </ion-row>
+                        </ion-col>
+                    </ion-row>
+                </form>
+        </ion-col>
+        <ion-col size="3" ></ion-col>
+    </ion-row>
+
+</ion-content>
