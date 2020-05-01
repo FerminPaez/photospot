@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "photospot-bdcfe"
+  },
+  "targets": {
+    "photospot-bdcfe": {
+      "hosting": {
+        "app": [
+          "photospot-bdcfe"
+        ]
+      }
+    }
   }
 }
