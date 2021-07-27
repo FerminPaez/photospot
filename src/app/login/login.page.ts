@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginServiceService } from '../providers/loginService.service';
+import { FirebaseDatabaseService } from '../providers/firebase-database.service';
+
 
 @Component({
   selector: 'app-login',
@@ -8,8 +10,10 @@ import { LoginServiceService } from '../providers/loginService.service';
 })
 export class LoginPage  {
 
-  constructor(public auth: LoginServiceService) {
-
+  constructor(public auth: LoginServiceService,
+              //private fdbs: FirebaseDatabaseService
+              ) {
+                //console.log(this.fdbs.getUsers())
   }
 
   datosLogin: any;

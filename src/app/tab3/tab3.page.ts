@@ -10,9 +10,10 @@ import { FirebaseStorageService } from '../providers/firebase-storage.service';
 })
 export class Tab3Page {
 
-  constructor(private fsb: FirebaseStorageService) {
+  constructor(
+    public fsb: FirebaseStorageService
+    ) {
   }
   public photo = localStorage.getItem('profilePicture');
   public name  = localStorage.getItem('usuario');
-
 }

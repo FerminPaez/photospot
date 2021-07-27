@@ -4,13 +4,14 @@ import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 
-
-
 @Injectable()
 export class LoginServiceService {
 
-    constructor(private router: Router, private auth: AngularFireAuth) {
-          if ( localStorage.getItem('uid') && localStorage.getItem('usuario') ) {
+    constructor(private router: Router, private auth: AngularFireAuth,
+                )
+    {
+      //console.log(this.firestore.getUsers().subscribe());
+      if ( localStorage.getItem('uid') && localStorage.getItem('usuario') ) {
             this.router.navigateByUrl('/tabs/tab1');
           }
        }
@@ -23,6 +24,7 @@ export class LoginServiceService {
           console.log(this.router.url);
           console.log(localStorage.getItem('iud') + ' nombre de usuario ' + localStorage.getItem('usuario'));
           this.router.navigateByUrl('/tabs/tab1');
+
           return true;
         })
         .catch((error) => {
@@ -40,9 +42,9 @@ export class LoginServiceService {
           console.log(datos.user.uid);
           localStorage.setItem('usuario', datos.user.displayName);
           localStorage.setItem('uid', datos.user.uid);
-          localStorage.setItem('profilePicture', datos.user.photoURL)
+          localStorage.setItem('profilePicture', datos.user.photoURL);
           this.router.navigateByUrl('/tabs/tab1');
-          
+
         });
 
     }

@@ -22,6 +22,7 @@ export class TabsPage {
     if (this.router.url === '/tabs/login') {
       this.login = false;
       console.log(this.login);
+      console.log(this.router.url);
     } else {
       this.login = true;
       console.log(this.login);

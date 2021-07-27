@@ -18,12 +18,16 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import * as firebase from 'firebase';
 
 
-firebase.initializeApp(environment.firebaseConfig);
 
 import { LoginServiceService } from './providers/loginService.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { FirebaseStorageService } from './providers/firebase-storage.service';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { FirebaseDatabaseService } from './providers/firebase-database.service';
 
+
+firebase.initializeApp(environment.firebaseConfig);
 
 
 
@@ -38,6 +42,7 @@ import { FirebaseStorageService } from './providers/firebase-storage.service';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule, // imports firebase/database, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    AngularFireStorageModule
 
   ],
   providers: [
@@ -46,6 +51,8 @@ import { FirebaseStorageService } from './providers/firebase-storage.service';
     LoginServiceService,
     FirebaseStorageService,
     AngularFireStorage,
+    AngularFirestore,
+    FirebaseDatabaseService,
 
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

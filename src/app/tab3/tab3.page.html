@@ -24,5 +24,19 @@
       </ion-col>
     </ion-row>
     <hr style="font-weight: bold;">
-  </div>
+
+    <input type="file" (change)="this.fsb.uploadFile($event)" />
+    <div>{{ this.fsb.uploadPercent | async }}</div>
+    <a [href]="this.fsb.downloadURL | async">{{ this.fsb.downloadURL | async }}</a>
+    </div>
+
+    <ion-row>
+      <ion-col>
+      </ion-col>
+      <ion-col>
+      </ion-col> 
+      <ion-col>
+      </ion-col>   
+
+    </ion-row> 
 </ion-content>

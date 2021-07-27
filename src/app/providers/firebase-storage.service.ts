@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from 'angularfire2/firestore';
-import { FileItem } from '../models/file-item';
-import * as firebase from 'firebase';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
+import { CameraResultType } from '@capacitor/core';
 
 @Injectable({
   providedIn: 'root'
@@ -9,51 +10,45 @@ import * as firebase from 'firebase';
 
 export class FirebaseStorageService {
 
-  private CARPETA_IMAGENES = 'ímg';
+  // private CARPETA_IMAGENES = 'ímg';
+  uploadPercent: Observable<number>;
+  downloadURL: Observable<string>;
+  profileUrl: Observable<string | null>;
 
-  constructor(
-    private db: AngularFirestore
-    ) {
 
+
+  constructor(private storage: AngularFireStorage) {
+    console.log(storage);
     }
+    uploadFile(event,path) {
+      //const file = event.target.files[0];
+      //console.log(event['changingThisBreaksApplicationSecurity'].blob());
+      const file = event;//['changingThisBreaksApplicationSecurity'];
 
-  cargarImagenesFirebase(imagenes: FileItem[]) {
-    //const storageRef = firebase.storage().ref();
-//
-    //for (const item of imagenes) {
-    //  item.isUploading = true;
-    //  if (item.progress >= 100){
-    //    continue;
-    //  }
-//
-    //  const uploadTask: firebase.storage.UploadTask = 
-    //    storageRef.child(`${this.CARPETA_IMAGENES}/${item.fileName}`)
-    //    .put(item.file);
-//
-    //  uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
-    //    (snapshot: firebase.storage.UploadTaskSnapshot) =>
-    //      item.progress = ( snapshot.bytesTransferred / snapshot.totalBytes) * 100,
-    //    ( error ) => console.log('Error al subir ', error),
-    //    // tslint:disable-next-line: no-unused-expression
-    //    () => {
-    //      console.log('Imagen cargada correctamente');
-    //      // tslint:disable-next-line: deprecation
-    //      //item.url = uploadTask.snapshot.downloadURL;
-    //      item.isUploading = false;
-    //      this.guardarImagen({
-    //        nombre : item.fileName,
-    //        url: item.url
-    //      });
-    //    });
-//
-//
-    //}
+      const filePath = path;
+      const fileRef = this.storage.ref(filePath);
+
+      const task = this.storage.upload(filePath, file);
+      // observe percentage changes
+      this.uploadPercent = task.percentageChanges();
+      // get notified when the download URL is available
+      task.snapshotChanges().pipe(
+        finalize(() => this.downloadURL = fileRef.getDownloadURL() )
+     )
+    .subscribe();
+      console.log(this.downloadURL);
+  }
+  downloadFile(fotos) {
+    const ref = this.storage.ref(fotos);
+    this.profileUrl = ref.getDownloadURL();
   }
 
-  private guardarImagen( imagen : {nombre: string, url: string}){
-    this.db.collection(`/${this.CARPETA_IMAGENES}`)
-      .add(imagen);
-  }
+
+
+
+
+
+
 
 }
 
